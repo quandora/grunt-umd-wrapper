@@ -1,7 +1,7 @@
 {
   "name": "grunt-umd-wrapper",
   "description": "Package your javascript modules into a UMD wrapper through preprocessing directives",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/quandora/grunt-umd-wrapper",
   "author": {
     "name": "Bogdan Stefanescu",
