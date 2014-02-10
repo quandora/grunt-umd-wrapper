@@ -108,6 +108,7 @@ You may need this directive if you change the template and you need the name of 
 
 var myModuleApi = {};
 
+@html fragment.html as html
 @include part1.js
 @include part2.js
 
