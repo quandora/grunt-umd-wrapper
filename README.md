@@ -1,6 +1,6 @@
 # grunt-umd-wrapper
 
-> Wrap your module using UMD based on jsdoc @requires annotations
+> Package your javascript modules into a UMD wrapper through preprocessing directives. 
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
