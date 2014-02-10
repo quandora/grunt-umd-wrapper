@@ -16,6 +16,8 @@
 
 var mod = {};
 
+var html = "<p>Some html \"code\"</p>";
+
 mod.part1 = 'part1 content';
 
 mod.part1 = 'part1 content';

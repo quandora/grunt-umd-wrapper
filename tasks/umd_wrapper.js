@@ -12,6 +12,11 @@ var path = require('path');
 
 module.exports = function(grunt) {
 
+    function endsWith(str, suffix) {
+        var l = str.length - suffix.length;
+        return l >= 0 && str.indexOf(suffix, l) === l;
+    }
+
     function Module() {
         this.name = null;
         this.exports = null;
@@ -72,8 +77,9 @@ module.exports = function(grunt) {
             var out = txt.replace(rx, function(m0, m1, m2) {
                 var token = m1;
                 var value = m2.trim();
+                var ar = null;
                 if (token === 'import') {
-                    var ar = value.split(/\s+as\s+/);
+                    ar = value.split(/\s+as\s+/);
                     if (ar.length === 2) {
                         req.push({'key':ar[0], 'val':ar[1]});
                     } else {
@@ -88,12 +94,32 @@ module.exports = function(grunt) {
                 } else if (token === 'module') {
                     module.name = value;
                     return '';
+                } else if (token === 'html') {
+                    ar = value.split(/\s+as\s+/);
+                    if (ar.length === 2) {
+                        var file = ar[0].trim();
+                        var varName = ar[1].trim();
+                        var html = readFile(baseDir, file);
+                        html = html.replace(/[\r\n]+/g, '').replace(/"/g, '\\"');
+                        return "var "+varName+" = \""+html+"\";\n";
+                    } else {
+                        grunt.fail('Syntax error: @html requires the as token. Example: @html file/path as varName', 3);
+                    }
                 } else { // ignore - log warn?
-                    return m0;
+                    return m0;                    
                 }
             });
             out = '\n'+out.trim()+'\n';
-            
+
+            if (!module.exports) {
+              var name = path.basename(file);
+              if (endsWith(name, '-module.js')) {
+                  name = name.substring(0, name.length - '-module.js'.length);
+              } else if (endsWith(name, '.js')) {
+                  name = name.substring(0, name.length - '.js'.length);
+              }
+              module.exports = name;
+            }
             module.source = out;
             module.imports = req;
             return module;
