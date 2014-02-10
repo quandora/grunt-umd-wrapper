@@ -1,7 +1,7 @@
 {
   "name": "grunt-umd-wrapper",
-  "description": "Wrap your module using UMD based on jsdoc @requires annotations",
-  "version": "0.1.0",
+  "description": "Package your javascript modules into a UMD wrapper through preprocessing directives",
+  "version": "0.2.0",
   "homepage": "https://github.com/quandora/grunt-umd-wrapper",
   "author": {
     "name": "Bogdan Stefanescu",
