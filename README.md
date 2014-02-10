@@ -95,9 +95,13 @@ You may need this directive if you change the template and you need the name of 
 
 
 **Notes** 
+
 1. Preprocessing directives must be used only in the main module file **and not** in included files.
+
 2. If you doesn't specify an `@export` directive the module file name will be used (by removing tany `-module.js` or `.js` suffix)
+
 3. You may not need to use any preprocessing directives if your module doesn't have dependencies. In this case an UMD wrapper with no dependencies will be generated.
+
 4. Each directive must be written on its own line. You cannot write multiple directives on the same line. Also you cannpt mix directives and javascript code on the same line.
 
 #### Example
