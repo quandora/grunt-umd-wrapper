@@ -85,9 +85,9 @@ Example: `@import jquery as $`
 
 * **@export**  - Define the name of the global variable which will be inserted into the `window` browser object (in the case of a browser global module definition).
 
-* **@include** - Include the content of a javascript file in the main module file.
+* **@include** - Include the content of a javascript file in the main module file. File paths are relative to the module file. 
 
-* **@html**    - assign html or css content to a variable specified using `as` keyword. The new lines, leading and trailing spaces fromt he html content will be removed. This can be usefull to insert HTML fragments into your javascript variables.
+* **@html**    - assign html or css content to a variable specified using `as` keyword. The new lines, leading and trailing spaces fromt he html content will be removed. This can be usefull to insert HTML fragments into your javascript variables. File paths are relative to the module file. 
 Example: `@html path/to/html/file as myHtml` will produce `var myHtml = "... html content ...";` 
 
 * **@module**  - Define the name of the module. This is not used by the default wrapper template. 
