@@ -7,6 +7,6 @@ var mod = {};
 
 @html fragment.html as html
 @include part1.js
-@include part1.js
+@include part2.js
 
 return mod;

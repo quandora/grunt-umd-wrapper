@@ -12,6 +12,9 @@ var path = require('path');
 
 module.exports = function(grunt) {
 
+    var glob = grunt.file.glob.sync;
+
+
     function endsWith(str, suffix) {
         var l = str.length - suffix.length;
         return l >= 0 && str.indexOf(suffix, l) === l;
@@ -68,6 +71,18 @@ module.exports = function(grunt) {
             return grunt.file.read(path.join(baseDir, filepath));
         }
 
+        function concatFiles(baseDir, pattern) {
+          var result = '';
+          var files = glob(pattern, {"cwd": baseDir});
+          if (Array.isArray(files)) {
+          for (var i=0, len=files.length; i<len; i++) {
+              var file = files[i];
+              result += readFile(baseDir, file);
+            }
+          }
+          return result;
+        }
+
         this.loadModule = function(file) {
             var baseDir = path.dirname(file);
             var txt = grunt.file.read(file);
@@ -87,7 +102,8 @@ module.exports = function(grunt) {
                     }
                     return '';
                 } else if (token === 'include') {
-                    return readFile(baseDir, value);
+                   return concatFiles(baseDir, value);
+                   //return readFile(baseDir, value);
                 } else if (token === 'export') {
                     module.exports = value;
                     return '';

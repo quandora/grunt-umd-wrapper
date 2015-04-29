@@ -32,7 +32,7 @@ exports.umd_wrapper = {
 
     var actual = grunt.file.read('tmp/module.js');
     var expected = grunt.file.read('test/expected/module.js');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(actual, expected, 'output differs from expected content');
 
     test.done();
   }

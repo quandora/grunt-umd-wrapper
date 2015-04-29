@@ -20,7 +20,7 @@ var html = "<p>Some html \"code\"</p>";
 
 mod.part1 = 'part1 content';
 
-mod.part1 = 'part1 content';
+mod.part2 = 'part2 content';
 
 
 return mod;
