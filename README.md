@@ -90,6 +90,9 @@ Example: `@import jquery as $`
 * **@html**    - assign html or css content to a variable specified using `as` keyword. The new lines, leading and trailing spaces fromt he html content will be removed. This can be usefull to insert HTML fragments into your javascript variables. File paths are relative to the module file. 
 Example: `@html path/to/html/file as myHtml` will produce `var myHtml = "... html content ...";` 
 
+* **@qute**    - assign a Quandora template to a variable specified using `as` keyword. The template file will be compiled as a javascript object and assigned to the given variable. This can be usefull to insert dynamic HTML fragments into your javascript variables. File paths are relative to the module file. 
+Example: `@qute path/to/qute/file as myQute` will produce `var myQute = [javascript code];` 
+
 * **@module**  - Define the name of the module. This is not used by the default wrapper template. 
 You may need this directive if you change the template and you need the name of your module.
 
